@@ -1,0 +1,154 @@
+---
+title: 'Webhook Authentication'
+description: 'Authenticate your webhooks'
+icon: 'code'
+---
+
+You can authenticate your webhooks using the following methods:
+
+## HMAC (Default)
+
+HMAC is the default authentication method for vartiq webhooks. If you don't provide any authentication method, it will be used by default.
+The signature is generated using the HMAC SHA-256 algorithm.
+You can get the signature from the `X-Vartiq-Signature` header.
+
+If you like to chnage the header name and provide your own secret, you can do so while creating the webhook.
+
+<CodeGroup>
+```bash JS/TS
+const webhook = await vartiq.webhook.create({
+  name: "Webhook name",
+  url: "https://example.com",
+  authMethod: "hmac",
+  hmacHeader: "X-Your-Signature",
+  hmacSecret: "your-secret",
+});
+```
+
+```bash Go
+webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
+	Name: "Webhook name",
+	URL:  "https://example.com",
+	AuthMethod: "hmac",
+	HMACHeader: "X-Your-Signature",
+	HMACSecret: "your-secret",
+})
+```
+
+```bash Python
+webhook = vartiq.webhook.create(
+  name="Webhook name",
+  url="https://example.com",
+  auth_method="hmac",
+  hmac_header="X-Your-Signature",
+  hmac_secret="your-secret",
+)
+```
+
+```bash PHP
+$webhook = $vartiq->webhook->create([
+  "name" => "Webhook name",
+  "url" => "https://example.com",
+  "auth_method" => "hmac",
+  "hmac_header" => "X-Your-Signature",
+  "hmac_secret" => "your-secret",
+]);
+```
+
+</CodeGroup>
+
+## Basic Auth
+
+Basic Auth is a simple authentication method that uses a username and password to authenticate the webhook.
+
+<CodeGroup>
+
+```bash JS/TS
+const webhook = await vartiq.webhook.create({
+  name: "Webhook name",
+  url: "https://example.com",
+  authMethod: "basic",
+  basicAuthUsername: "username",
+  basicAuthPassword: "password",
+});
+```
+
+```bash Go
+webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
+	Name: "Webhook name",
+	URL:  "https://example.com",
+	AuthMethod: "basic",
+	BasicAuthUsername: "username",
+	BasicAuthPassword: "password",
+})
+```
+
+```bash Python
+webhook = vartiq.webhook.create(
+  name="Webhook name",
+  url="https://example.com",
+  auth_method="basic",
+  basic_auth_username="username",
+  basic_auth_password="password",
+)
+```
+
+```bash PHP
+$webhook = $vartiq->webhook->create([
+  "name" => "Webhook name",
+  "url" => "https://example.com",
+  "auth_method" => "basic",
+  "basic_auth_username" => "username",
+  "basic_auth_password" => "password",
+]);
+```
+
+</CodeGroup>
+
+## API Key
+
+You can use your own API key to authenticate the webhook.
+
+<CodeGroup>
+
+```bash JS/TS
+const webhook = await vartiq.webhook.create({
+  name: "Webhook name",
+  url: "https://example.com",
+  authMethod: "apiKey",
+  apiKey: "your-api-key",
+  apiKeyHeader: "X-Your-API-Key",
+});
+```
+
+```bash Go
+webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
+	Name: "Webhook name",
+	URL:  "https://example.com",
+	AuthMethod: "api_key",
+	APIKey: "your-api-key",
+	APIKeyHeader: "X-Your-API-Key",
+})
+```
+
+```bash Python
+webhook = vartiq.webhook.create(
+  name="Webhook name",
+  url="https://example.com",
+  auth_method="api_key",
+  api_key="your-api-key",
+  api_key_header="X-Your-API-Key",
+)
+```
+
+```bash PHP
+$webhook = $vartiq->webhook->create([
+  name="Webhook name",
+  url="https://example.com",
+  auth_method="api_key",
+  api_key="your-api-key",
+  api_key_header="X-Your-API-Key",
+]);
+```
+
+</CodeGroup>
