@@ -1,0 +1,176 @@
+---
+title: 'Apps'
+description: 'Create and manage apps for your customers'
+---
+
+## Create App
+
+Create a new app for your customer.
+
+<CodeGroup>
+
+```javascript JavaScript
+const app = await vartiq.app.create({
+  name: "App name",
+  projectId: "PROJECT_ID",
+  description: "Optional description", // optional
+  environment: "development" // optional, defaults to development
+});
+```
+
+```go Go
+app, err := client.App.Create(ctx, &vartiq.CreateAppRequest{
+  Name: "App name",
+  ProjectID: "PROJECT_ID",
+  Description: "Optional description", // optional
+  Environment: "development", // optional, defaults to development
+})
+```
+
+```python Python
+app = vartiq.app.create(
+  name="App name",
+  project_id="PROJECT_ID",
+  description="Optional description",  # optional
+  environment="development"  # optional, defaults to development
+)
+```
+
+```php PHP
+$app = $vartiq->app->create([
+  "name" => "App name",
+  "project_id" => "PROJECT_ID",
+  "description" => "Optional description", // optional
+  "environment" => "development" // optional, defaults to development
+]);
+```
+
+</CodeGroup>
+
+## Get Apps
+
+Get all apps in a project.
+
+<CodeGroup>
+
+```javascript JavaScript
+const apps = await vartiq.app.list({
+  projectId: "PROJECT_ID",
+  environment: "development", // optional
+  limit: 10, // optional, defaults to 10
+  skip: 0 // optional, defaults to 0
+});
+```
+
+```go Go
+apps, err := client.App.List(ctx, &vartiq.ListAppsRequest{
+  ProjectID: "PROJECT_ID",
+  Environment: "development", // optional
+  Limit: 10, // optional, defaults to 10
+  Skip: 0, // optional, defaults to 0
+})
+```
+
+```python Python
+apps = vartiq.app.list(
+  project_id="PROJECT_ID",
+  environment="development",  # optional
+  limit=10,  # optional, defaults to 10
+  skip=0  # optional, defaults to 0
+)
+```
+
+```php PHP
+$apps = $vartiq->app->list([
+  "project_id" => "PROJECT_ID",
+  "environment" => "development", // optional
+  "limit" => 10, // optional, defaults to 10
+  "skip" => 0 // optional, defaults to 0
+]);
+```
+
+</CodeGroup>
+
+## Get App
+
+Get a specific app by ID.
+
+<CodeGroup>
+
+```javascript JavaScript
+const app = await vartiq.app.get("APP_ID");
+```
+
+```go Go
+app, err := client.App.Get(ctx, "APP_ID")
+```
+
+```python Python
+app = vartiq.app.get("APP_ID")
+```
+
+```php PHP
+$app = $vartiq->app->get("APP_ID");
+```
+
+</CodeGroup>
+
+## Update App
+
+Update an existing app.
+
+<CodeGroup>
+
+```javascript JavaScript
+const app = await vartiq.app.update("APP_ID", {
+  name: "New name", // optional
+  description: "New description" // optional
+});
+```
+
+```go Go
+app, err := client.App.Update(ctx, "APP_ID", &vartiq.UpdateAppRequest{
+  Name: "New name", // optional
+  Description: "New description", // optional
+})
+```
+
+```python Python
+app = vartiq.app.update("APP_ID", 
+  name="New name",  # optional
+  description="New description"  # optional
+)
+```
+
+```php PHP
+$app = $vartiq->app->update("APP_ID", [
+  "name" => "New name", // optional
+  "description" => "New description" // optional
+]);
+```
+
+</CodeGroup>
+
+## Delete App
+
+Delete an app.
+
+<CodeGroup>
+
+```javascript JavaScript
+await vartiq.app.delete("APP_ID");
+```
+
+```go Go
+err := client.App.Delete(ctx, "APP_ID")
+```
+
+```python Python
+vartiq.app.delete("APP_ID")
+```
+
+```php PHP
+$vartiq->app->delete("APP_ID");
+```
+
+</CodeGroup> 

@@ -1,0 +1,29 @@
+---
+title: "Delete Webhook"
+api: "DELETE /webhooks/{webhookId}"
+---
+
+### URL Parameters
+
+<ParamField path="webhookId" type="string" required>
+  The unique identifier of the webhook to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Webhook deleted successfully"
+}
+``` 

@@ -1,0 +1,66 @@
+---
+title: 'Get Projects'
+api: 'GET /api/v1/projects'
+---
+
+### Headers
+
+<ParamField header="companyid" type="string" required>
+  The unique identifier of your organization
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Array of project objects
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the project
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the project
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Description of the project (if provided)
+    </ResponseField>
+    <ResponseField name="company" type="string">
+      Company ID associated with the project
+    </ResponseField>
+    <ResponseField name="environment" type="string">
+      Environment of the project (e.g., "development")
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the project was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the project was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Projects retrieved successfully",
+  "data": [
+    {
+      "id": "proj_01JWB8YZNBQDJA3VZ3F8Z9C5NX",
+      "name": "project stage24",
+      "company": "6836eb8d404feca42c262a86",
+      "environment": "development",
+      "createdAt": "2025-05-28T11:03:12.308Z",
+      "updatedAt": "2025-05-28T11:03:12.308Z"
+    }
+  ]
+}
+``` 

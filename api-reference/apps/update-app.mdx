@@ -1,0 +1,77 @@
+---
+title: "Update App"
+api: "PUT /apps/{appId}"
+---
+
+### Headers
+
+<ParamField header="companyid" type="string" required>
+  The unique identifier of your company
+</ParamField>
+
+### URL Parameters
+
+<ParamField path="appId" type="string" required>
+  The unique identifier of the app to update
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="name" type="string">
+  New name for the app
+</ParamField>
+
+<ParamField body="description" type="string">
+  New description for the app
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The updated app object
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the app
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Updated name of the app
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Updated description of the app (if provided)
+    </ResponseField>
+    <ResponseField name="environment" type="string">
+      Environment of the app ("development" or "production")
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the app was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the app was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "App updated successfully",
+  "data": {
+    "id": "app_01JT38PHYK11F3X3M4772HE3TK",
+    "name": "hello app",
+    "description": "hello1",
+    "environment": "development",
+    "createdAt": "2025-04-30T11:53:17.020Z",
+    "updatedAt": "2025-04-30T11:53:44.548Z"
+  }
+}
+``` 

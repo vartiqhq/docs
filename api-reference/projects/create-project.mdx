@@ -1,0 +1,60 @@
+---
+title: "Create Project"
+api: "POST /projects"
+---
+
+### Body Parameters
+
+<ParamField body="name" type="string" required>
+  Name of the project
+</ParamField>
+
+<ParamField body="description" type="string">
+  Optional description of the project
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The created project object
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the project
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the project
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Description of the project (if provided)
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the project was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the project was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Project created successfully",
+  "data": {
+    "id": "proj_01JTD1G189Y47YNPWNJDYRXW39",
+    "name": "New Project",
+    "createdAt": "2025-05-04T06:59:47.599Z",
+    "updatedAt": "2025-05-04T06:59:47.599Z"
+  }
+}
+```

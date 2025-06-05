@@ -1,0 +1,155 @@
+---
+title: "Webhook Message"
+api: "POST /webhook-messages"
+---
+
+### Headers
+
+<ParamField header="companyid" type="string" required>
+  The unique identifier of your company
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="appId" type="string" required>
+  The unique identifier of the app to send the webhook message to
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  The payload to be sent in the webhook message
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The created webhook message details
+  <Expandable title="Properties">
+    <ResponseField name="webhookMessage" type="object">
+      Details of the created webhook message
+      <Expandable title="Properties">
+        <ResponseField name="id" type="string">
+          Unique identifier for the webhook message
+        </ResponseField>
+        <ResponseField name="isDelivered" type="boolean">
+          Indicates if the message has been delivered
+        </ResponseField>
+        <ResponseField name="payload" type="string">
+          The stringified payload of the message
+        </ResponseField>
+        <ResponseField name="signature" type="string">
+          HMAC signature of the message
+        </ResponseField>
+        <ResponseField name="headers" type="array">
+          Array of header objects containing key-value pairs
+        </ResponseField>
+        <ResponseField name="createdAt" type="string">
+          Timestamp when the message was created
+        </ResponseField>
+        <ResponseField name="updatedAt" type="string">
+          Timestamp when the message was last updated
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="webhookMessageAttempt" type="object">
+      Details of the delivery attempt
+      <Expandable title="Properties">
+        <ResponseField name="id" type="string">
+          Unique identifier for the attempt
+        </ResponseField>
+        <ResponseField name="isProcessed" type="boolean">
+          Indicates if the attempt has been processed
+        </ResponseField>
+        <ResponseField name="isResend" type="boolean">
+          Indicates if this is a resend attempt
+        </ResponseField>
+        <ResponseField name="statusCode" type="number">
+          HTTP status code of the attempt
+        </ResponseField>
+        <ResponseField name="response" type="string">
+          Response received from the webhook endpoint
+        </ResponseField>
+        <ResponseField name="headers" type="array">
+          Array of header objects containing key-value pairs
+        </ResponseField>
+        <ResponseField name="createdAt" type="string">
+          Timestamp when the attempt was created
+        </ResponseField>
+        <ResponseField name="updatedAt" type="string">
+          Timestamp when the attempt was last updated
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+    "data": {
+        "webhookMessage": {
+            "headers": [
+                {
+                    "key": "x-app",
+                    "value": "x-value",
+                    "_id": "6812160256d753f3b41e1c66"
+                },
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "_id": "6812160256d753f3b41e1c67"
+                }
+            ],
+            "id": "wm_01JT3AC28MCG19W3DP8XG99832",
+            "isDelivered": false,
+            "payload": "{\"hello\":\"one\"}",
+            "signature": "ba245c491633352932de63696a47de3d3da5d75e61b09ecc7614a5979b0db762",
+            "webhook": "6812160256d753f3b41e1c65",
+            "_id": "6812160656d753f3b41e1c6a",
+            "createdAt": "2025-04-30T12:22:30.426Z",
+            "updatedAt": "2025-04-30T12:22:30.426Z",
+            "__v": 0
+        },
+        "webhookMessageAttempt": {
+            "awsMessageId": null,
+            "headers": [
+                {
+                    "key": "x-app",
+                    "value": "x-value",
+                    "_id": "6812160256d753f3b41e1c66"
+                },
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "_id": "6812160256d753f3b41e1c67"
+                }
+            ],
+            "id": "wma_01JT3AC2BWWCWMAWVR7056VNQS",
+            "isProcessed": false,
+            "isResend": false,
+            "response": null,
+            "statusCode": null,
+            "webhookMessage": "6812160656d753f3b41e1c6a",
+            "_id": "6812160656d753f3b41e1c6e",
+            "createdAt": "2025-04-30T12:22:30.527Z",
+            "updatedAt": "2025-04-30T12:22:30.527Z",
+            "__v": 0
+        }
+    },
+    "message": "Webhook message created successfully",
+    "success": true
+}
+```
+
+
+
+
+

@@ -1,0 +1,192 @@
+---
+title: 'Webhooks'
+description: 'Create and manage webhooks for your apps'
+---
+
+## Create Webhook
+
+Create a new webhook for an app.
+
+<CodeGroup>
+
+```javascript JavaScript
+const webhook = await vartiq.webhook.create({
+  name: "Webhook name",
+  url: "https://your-webhook-url.com",
+  appId: "APP_ID",
+  customHeaders: [{ key: "x-app", value: "x-value" }], // optional
+  authMethod: "basic", // optional: "basic", "hmac", or "apiKey"
+  userName: "username", // required if authMethod is "basic"
+  password: "password", // required if authMethod is "basic"
+  apiKey: "api-key", // required if authMethod is "apiKey"
+  apiKeyHeader: "x-api-key", // required if authMethod is "apiKey"
+  hmacHeader: "x-signature", // required if authMethod is "hmac"
+  hmacSecret: "your-secret" // required if authMethod is "hmac"
+});
+```
+
+```go Go
+webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
+  Name: "Webhook name",
+  URL: "https://your-webhook-url.com",
+  AppID: "APP_ID",
+  CustomHeaders: []vartiq.Header{{Key: "x-app", Value: "x-value"}}, // optional
+  AuthMethod: "basic", // optional: "basic", "hmac", or "apiKey"
+  UserName: "username", // required if authMethod is "basic"
+  Password: "password", // required if authMethod is "basic"
+  APIKey: "api-key", // required if authMethod is "apiKey"
+  APIKeyHeader: "x-api-key", // required if authMethod is "apiKey"
+  HMACHeader: "x-signature", // required if authMethod is "hmac"
+  HMACSecret: "your-secret", // required if authMethod is "hmac"
+})
+```
+
+```python Python
+webhook = vartiq.webhook.create(
+  name="Webhook name",
+  url="https://your-webhook-url.com",
+  app_id="APP_ID",
+  custom_headers=[{"key": "x-app", "value": "x-value"}],  # optional
+  auth_method="basic",  # optional: "basic", "hmac", or "apiKey"
+  user_name="username",  # required if auth_method is "basic"
+  password="password",  # required if auth_method is "basic"
+  api_key="api-key",  # required if auth_method is "apiKey"
+  api_key_header="x-api-key",  # required if auth_method is "apiKey"
+  hmac_header="x-signature",  # required if auth_method is "hmac"
+  hmac_secret="your-secret"  # required if auth_method is "hmac"
+)
+```
+
+```php PHP
+$webhook = $vartiq->webhook->create([
+  "name" => "Webhook name",
+  "url" => "https://your-webhook-url.com",
+  "appId" => "APP_ID",
+  "customHeaders" => [["key" => "x-app", "value" => "x-value"]], // optional
+  "authMethod" => "basic", // optional: "basic", "hmac", or "apiKey"
+  "userName" => "username", // required if authMethod is "basic"
+  "password" => "password", // required if authMethod is "basic"
+  "apiKey" => "api-key", // required if authMethod is "apiKey"
+  "apiKeyHeader" => "x-api-key", // required if authMethod is "apiKey"
+  "hmacHeader" => "x-signature", // required if authMethod is "hmac"
+  "hmacSecret" => "your-secret" // required if authMethod is "hmac"
+]);
+```
+
+</CodeGroup>
+
+## Get Webhooks
+
+Get all webhooks for an app.
+
+<CodeGroup>
+
+```javascript JavaScript
+const webhooks = await vartiq.webhook.list({
+  appId: "APP_ID"
+});
+```
+
+```go Go
+webhooks, err := client.Webhook.List(ctx, &vartiq.ListWebhooksRequest{
+  AppID: "APP_ID",
+})
+```
+
+```python Python
+webhooks = vartiq.webhook.list(
+  app_id="APP_ID"
+)
+```
+
+```php PHP
+$webhooks = $vartiq->webhook->list([
+  "appId" => "APP_ID"
+]);
+```
+
+</CodeGroup>
+
+## Get Webhook
+
+Get a specific webhook by ID.
+
+<CodeGroup>
+
+```javascript JavaScript
+const webhook = await vartiq.webhook.get("WEBHOOK_ID");
+```
+
+```go Go
+webhook, err := client.Webhook.Get(ctx, "WEBHOOK_ID")
+```
+
+```python Python
+webhook = vartiq.webhook.get("WEBHOOK_ID")
+```
+
+```php PHP
+$webhook = $vartiq->webhook->get("WEBHOOK_ID");
+```
+
+</CodeGroup>
+
+## Update Webhook
+
+Update an existing webhook.
+
+<CodeGroup>
+
+```javascript JavaScript
+const webhook = await vartiq.webhook.update("WEBHOOK_ID", {
+  name: "New name", // optional
+  url: "https://new-url.com" // optional
+});
+```
+
+```go Go
+webhook, err := client.Webhook.Update(ctx, "WEBHOOK_ID", &vartiq.UpdateWebhookRequest{
+  Name: "New name", // optional
+  URL: "https://new-url.com", // optional
+})
+```
+
+```python Python
+webhook = vartiq.webhook.update("WEBHOOK_ID",
+  name="New name",  # optional
+  url="https://new-url.com"  # optional
+)
+```
+
+```php PHP
+$webhook = $vartiq->webhook->update("WEBHOOK_ID", [
+  "name" => "New name", // optional
+  "url" => "https://new-url.com" // optional
+]);
+```
+
+</CodeGroup>
+
+## Delete Webhook
+
+Delete a webhook.
+
+<CodeGroup>
+
+```javascript JavaScript
+await vartiq.webhook.delete("WEBHOOK_ID");
+```
+
+```go Go
+err := client.Webhook.Delete(ctx, "WEBHOOK_ID")
+```
+
+```python Python
+vartiq.webhook.delete("WEBHOOK_ID")
+```
+
+```php PHP
+$vartiq->webhook->delete("WEBHOOK_ID");
+```
+
+</CodeGroup> 

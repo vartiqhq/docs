@@ -3,11 +3,11 @@
   "theme": "mint",
   "name": "Vartiq Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1A1A1A",
+    "light": "#E6E6E7",
+    "dark": "#1A1A1A"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon1.svg",
   "navigation": {
     "groups": [
       {
@@ -19,25 +19,71 @@
       {
         "group": "Essentials",
         "pages": [
-          "essentials/authentication"
+          "essentials/authentication",
+          "essentials/verify"
         ]
       },
       {
-        "group": "API Documentation",
+        "group": "Usage",
         "pages": [
-          "api-reference/introduction"
+          "usage/init",
+          "usage/projects",
+          "usage/apps",
+          "usage/webhooks",
+          "usage/webhook-messages"
         ]
       },
       {
-        "group": "Endpoint Examples",
+        "group": "API Reference",
         "pages": [
-          "api-reference/endpoint/get",
-          "api-reference/endpoint/create",
-          "api-reference/endpoint/delete",
-          "api-reference/endpoint/webhook"
+          {
+            "group": "Projects",
+            "pages": [
+              "api-reference/projects/create-project",
+              "api-reference/projects/update-project", 
+              "api-reference/projects/delete-project",
+              "api-reference/projects/get-project",
+              "api-reference/projects/get-projects"
+            ]
+          },
+          {
+            "group": "Apps",
+            "pages": [
+              "api-reference/apps/create-app",
+              "api-reference/apps/update-app",
+              "api-reference/apps/delete-app", 
+              "api-reference/apps/get-app",
+              "api-reference/apps/get-apps"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "api-reference/webhooks/create-webhook",
+              "api-reference/webhooks/update-webhook",
+              "api-reference/webhooks/delete-webhook",
+              "api-reference/webhooks/get-webhook", 
+              "api-reference/webhooks/get-webhooks"
+            ]
+          },
+          {
+            "group": "Webhook Messages",
+            "pages": [
+              "api-reference/webhook-messages/webhook-message"
+            ]
+          }
         ]
       }
     ]
+  },
+  "api": {
+    "mdx": {
+      "server": "https://api.us.vartiq.com",
+      "auth": {
+        "method": "key",
+        "name": "x-api-key"
+      }
+    }
   },
   "logo": {
     "light": "/logo/light.svg",

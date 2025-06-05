@@ -1,0 +1,143 @@
+---
+title: "Create Webhook"
+api: "POST /webhooks"
+---
+
+### Body Parameters
+
+<ParamField body="appId" type="string" required>
+  The ID of the app to create the webhook for
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  Name of the webhook (2-100 characters)
+</ParamField>
+
+<ParamField body="url" type="string" required>
+  The URL where webhook events will be sent
+</ParamField>
+
+<ParamField body="customHeaders" type="array">
+  Array of custom headers to be sent with the webhook
+  <Expandable title="Custom Header Object">
+    <ParamField body="key" type="string" required>
+      Header key
+    </ParamField>
+    <ParamField body="value" type="string" required>
+      Header value
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="authMethod" type="string">
+  Authentication method for the webhook. Must be one of: "basic", "hmac", or "apiKey"
+</ParamField>
+
+<ParamField body="userName" type="string">
+  Username for basic authentication (required if authMethod is "basic")
+</ParamField>
+
+<ParamField body="password" type="string">
+  Password for basic authentication (required if authMethod is "basic")
+</ParamField>
+
+<ParamField body="apiKey" type="string">
+  API key for apiKey authentication (required if authMethod is "apiKey")
+</ParamField>
+
+<ParamField body="apiKeyHeader" type="string">
+  Header name for the API key (required if authMethod is "apiKey")
+</ParamField>
+
+<ParamField body="hmacHeader" type="string">
+  Header name for the HMAC signature (required if authMethod is "hmac")
+</ParamField>
+
+<ParamField body="hmacSecret" type="string">
+  Secret for HMAC signature generation (required if authMethod is "hmac")
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The created webhook object
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the webhook
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the webhook
+    </ResponseField>
+    <ResponseField name="url" type="string">
+      URL where webhook events will be sent
+    </ResponseField>
+    <ResponseField name="secret" type="string">
+      Secret key for webhook verification
+    </ResponseField>
+    <ResponseField name="customHeaders" type="array">
+      Array of custom headers
+      <Expandable title="Header Object">
+        <ResponseField name="key" type="string">
+          Header key
+        </ResponseField>
+        <ResponseField name="value" type="string">
+          Header value
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="headers" type="array">
+      Array of default headers
+      <Expandable title="Header Object">
+        <ResponseField name="key" type="string">
+          Header key
+        </ResponseField>
+        <ResponseField name="value" type="string">
+          Header value
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the webhook was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the webhook was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Webhook created successfully",
+  "data": {
+    "id": "wh_01JT39DVQGKA1RV4QNJ1VFRNW2",
+    "name": "heelo",
+    "url": "https://exp.com",
+    "secret": "01JT39DVQJW3A49TR3XXFVM939",
+    "customHeaders": [
+      {
+        "key": "x-app",
+        "value": "x-value"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "createdAt": "2025-04-30T12:06:00.703Z",
+    "updatedAt": "2025-04-30T12:06:00.703Z"
+  }
+}
+``` 

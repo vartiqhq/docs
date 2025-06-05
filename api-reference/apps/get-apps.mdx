@@ -1,0 +1,89 @@
+---
+title: "Get Apps"
+api: "GET /apps"
+---
+
+### Headers
+
+<ParamField header="companyid" type="string" required>
+  The unique identifier of your company
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="projectId" type="string" required>
+  Filter apps by project ID
+</ParamField>
+
+<ParamField query="environment" type="string">
+  Filter apps by environment ("development" or "production")
+</ParamField>
+
+<ParamField query="limit" type="number" default="10">
+  Maximum number of apps to return
+</ParamField>
+
+<ParamField query="skip" type="number" default="0">
+  Number of apps to skip for pagination
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Array of app objects
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the app
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the app
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Description of the app (if provided)
+    </ResponseField>
+    <ResponseField name="environment" type="string">
+      Environment of the app ("development" or "production")
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the app was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the app was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Apps retrieved successfully",
+  "data": [
+    {
+      "id": "app_01JT38AK6GH3VXP2PPH5BTF36X",
+      "name": "second app",
+      "description": "",
+      "environment": "development",
+      "createdAt": "2025-04-30T11:46:45.092Z",
+      "updatedAt": "2025-04-30T11:46:45.092Z"
+    },
+    {
+      "id": "app_01JSZ1B53E22QS6TA3441ZTSFS",
+      "name": "Production App",
+      "description": "Production app",
+      "environment": "production",
+      "createdAt": "2025-04-28T20:27:45.648Z",
+      "updatedAt": "2025-04-28T20:27:45.648Z"
+    }
+  ]
+}
+``` 

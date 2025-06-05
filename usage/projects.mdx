@@ -1,0 +1,148 @@
+---
+title: 'Projects'
+description: 'Create and manage projects'
+---
+
+## Create Project
+
+Create a new project.
+
+<CodeGroup>
+
+```javascript JavaScript
+const project = await vartiq.project.create({
+  name: "Project name",
+  description: "Optional description" // optional
+});
+```
+
+```go Go
+project, err := client.Project.Create(ctx, &vartiq.CreateProjectRequest{
+  Name: "Project name",
+  Description: "Optional description", // optional
+})
+```
+
+```python Python
+project = vartiq.project.create(
+  name="Project name",
+  description="Optional description"  # optional
+)
+```
+
+```php PHP
+$project = $vartiq->project->create([
+  "name" => "Project name",
+  "description" => "Optional description" // optional
+]);
+```
+
+</CodeGroup>
+
+## Get Projects
+
+Get all projects.
+
+<CodeGroup>
+
+```javascript JavaScript
+const projects = await vartiq.project.list();
+```
+
+```go Go
+projects, err := client.Project.List(ctx)
+```
+
+```python Python
+projects = vartiq.project.list()
+```
+
+```php PHP
+$projects = $vartiq->project->list();
+```
+
+</CodeGroup>
+
+## Get Project
+
+Get a specific project by ID.
+
+<CodeGroup>
+
+```javascript JavaScript
+const project = await vartiq.project.get("PROJECT_ID");
+```
+
+```go Go
+project, err := client.Project.Get(ctx, "PROJECT_ID")
+```
+
+```python Python
+project = vartiq.project.get("PROJECT_ID")
+```
+
+```php PHP
+$project = $vartiq->project->get("PROJECT_ID");
+```
+
+</CodeGroup>
+
+## Update Project
+
+Update an existing project.
+
+<CodeGroup>
+
+```javascript JavaScript
+const project = await vartiq.project.update("PROJECT_ID", {
+  name: "New name", // optional
+  description: "New description" // optional
+});
+```
+
+```go Go
+project, err := client.Project.Update(ctx, "PROJECT_ID", &vartiq.UpdateProjectRequest{
+  Name: "New name", // optional
+  Description: "New description", // optional
+})
+```
+
+```python Python
+project = vartiq.project.update("PROJECT_ID",
+  name="New name",  # optional
+  description="New description"  # optional
+)
+```
+
+```php PHP
+$project = $vartiq->project->update("PROJECT_ID", [
+  "name" => "New name", // optional
+  "description" => "New description" // optional
+]);
+```
+
+</CodeGroup>
+
+## Delete Project
+
+Delete a project.
+
+<CodeGroup>
+
+```javascript JavaScript
+await vartiq.project.delete("PROJECT_ID");
+```
+
+```go Go
+err := client.Project.Delete(ctx, "PROJECT_ID")
+```
+
+```python Python
+vartiq.project.delete("PROJECT_ID")
+```
+
+```php PHP
+$vartiq->project->delete("PROJECT_ID");
+```
+
+</CodeGroup> 

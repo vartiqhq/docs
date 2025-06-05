@@ -1,0 +1,56 @@
+---
+title: 'Verify Webhook'
+description: 'Verify your webhook'
+---
+
+You can verify your webhook by sending a message to the webhook. This is optional, but highly recommended.
+
+Upon verification success, the `verify` function will return the payload.
+
+You can get the signature from the `X-Vartiq-Signature` header. If you provided your own signature header name, you can use that instead.
+
+<CodeGroup>
+
+```javascript JavaScript
+const verifiedPayload = vartiq.verify(payload, signature, webhookSecret);
+```
+
+```go Go
+verifiedPayload, err := client.Verify(payload, signature, webhookSecret)
+```
+
+```python Python
+verified_payload = vartiq.verify(payload, signature, webhook_secret)
+```
+
+```php PHP
+$verifiedPayload = $vartiq->verify($payload, $signature, $webhookSecret);
+```
+
+</CodeGroup>
+
+## Manual Verification
+
+You can also manually verify the webhook by computing the HMAC signature yourself.
+
+<CodeGroup>
+
+```javascript JavaScript
+const signature = crypto.createHmac("sha256", webhookSecret).update(payload).digest("hex");
+```
+
+```go Go
+signature := hmac.New(sha256.New, []byte(webhookSecret)).Sum(payload)
+```
+
+```python Python
+signature = hmac.new(webhook_secret.encode(), payload.encode(), hashlib.sha256).hexdigest()
+```
+
+```php PHP
+$signature = hash_hmac("sha256", $payload, $webhookSecret);
+```
+
+</CodeGroup>
+
+

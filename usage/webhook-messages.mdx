@@ -1,0 +1,64 @@
+---
+title: 'Webhook Messages'
+description: 'Send messages to your webhooks'
+---
+
+## Send Message
+
+Send a message to all webhooks in an app. The message will be delivered to all webhooks associated with the app.
+
+<CodeGroup>
+
+```javascript JavaScript
+const message = await vartiq.webhook.message.create("APP_ID", {
+  event: "user.created",
+  data: {
+    user: {
+      id: 123,
+      name: "John Doe"
+    },
+    action: "user.created"
+  }
+});
+```
+
+```go Go
+message, err := client.WebhookMessage.Create(ctx, "APP_ID", map[string]interface{}{
+  "event": "user.created",
+  "data": map[string]interface{}{
+    "user": map[string]interface{}{
+      "id": 123,
+      "name": "John Doe",
+    },
+    "event": "user.created",
+  },
+})
+```
+
+```python Python
+message = vartiq.webhook.message.create("APP_ID", {
+  "event": "user.created",
+  "data": {
+    "user": {
+      "id": 123,
+      "name": "John Doe"
+    },
+    "event": "user.created"
+  }
+})
+```
+
+```php PHP
+$message = $vartiq->webhook->message->create("APP_ID", [
+  "event" => "user.created",
+  "data" => [
+    "user" => [
+      "id" => 123,
+      "name" => "John Doe"
+    ],
+    "event" => "user.created"
+  ]
+]);
+```
+
+</CodeGroup>

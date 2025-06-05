@@ -1,0 +1,105 @@
+---
+title: "Update Webhook"
+api: "PUT /webhooks/{webhookId}"
+---
+
+### URL Parameters
+
+<ParamField path="webhookId" type="string" required>
+  The unique identifier of the webhook to update
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="name" type="string">
+  New name for the webhook (2-100 characters)
+</ParamField>
+
+<ParamField body="url" type="string">
+  New URL where webhook events will be sent
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message describing the result of the operation
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The updated webhook object
+  <Expandable title="Properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the webhook
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Updated name of the webhook
+    </ResponseField>
+    <ResponseField name="url" type="string">
+      Updated URL where webhook events will be sent
+    </ResponseField>
+    <ResponseField name="secret" type="string">
+      Secret key for webhook verification
+    </ResponseField>
+    <ResponseField name="customHeaders" type="array">
+      Array of custom headers
+      <Expandable title="Header Object">
+        <ResponseField name="key" type="string">
+          Header key
+        </ResponseField>
+        <ResponseField name="value" type="string">
+          Header value
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="headers" type="array">
+      Array of default headers
+      <Expandable title="Header Object">
+        <ResponseField name="key" type="string">
+          Header key
+        </ResponseField>
+        <ResponseField name="value" type="string">
+          Header value
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="createdAt" type="string">
+      Timestamp when the webhook was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string">
+      Timestamp when the webhook was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response Example
+
+```json
+{
+  "success": true,
+  "message": "Webhook updated successfully",
+  "data": {
+    "id": "wh_01JT39T79CFY20Z7G0M2KC4HVC",
+    "name": "heelo111",
+    "url": "https://exp1.com",
+    "secret": "01JT39T79HMJHEYQ9FXZ9VM2XC",
+    "customHeaders": [
+      {
+        "key": "x-app",
+        "value": "x-value"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "createdAt": "2025-04-30T12:12:45.756Z",
+    "updatedAt": "2025-04-30T12:17:10.831Z"
+  }
+}
+``` 

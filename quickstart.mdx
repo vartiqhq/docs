@@ -15,7 +15,7 @@ Vartiq has three main concepts:
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 npm i vartiq
 // or
 bun add vartiq
@@ -23,15 +23,15 @@ bun add vartiq
 pnpm add vartiq
 ```
 
-```bash Go
-go get github.com/vartiqhq/vartiq-go-sdk/vartiq
+```go Go
+go get github.com/vartiqhq/vartiq-go-sdk
 ```
 
-```bash Python
+```python Python
 pip install vartiq
 ```
 
-```bash PHP
+```php PHP
 composer require vartiq/vartiq
 ```
 
@@ -52,13 +52,13 @@ You can have multiple projects in your account. Get the project ID from the proj
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 import { Vartiq } from 'vartiq';
 
 const vartiq = new Vartiq("YOUR_API_KEY");
 ```
 
-    ```bash Go
+```go Go
 
 import('github.com/vartiqhq/vartiq-go-sdk/vartiq');
 
@@ -66,13 +66,13 @@ vartiq := vartiq.New("YOUR_API_KEY")
 
 ````
 
-```bash Python
+```python Python
 from vartiq import Vartiq
 
 vartiq = Vartiq("YOUR_API_KEY")
 ````
 
-```bash PHP
+```php PHP
 use Vartiq\Vartiq;
 
 $vartiq = new Vartiq("YOUR_API_KEY");
@@ -84,32 +84,39 @@ $vartiq = new Vartiq("YOUR_API_KEY");
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 const app = await vartiq.app.create({
   name: "App name", // setting this to the name or id of your customer is recommended
   projectId: "PROJECT_ID",
 });
 ```
 
-```bash Go
+```go Go
 app, err := client.App.Create(ctx, &vartiq.CreateAppRequest{
 	Name:      "App name", // setting this to the name or id of your customer is recommended
 	ProjectID: "PROJECT_ID",
 })
 ```
 
-```bash Python
+```python Python
 app = vartiq.app.create(
   name="App name", // setting this to the name or id of your customer is recommended
   project_id="PROJECT_ID",
 )
 ```
 
-```bash PHP
+```php PHP
 $app = $vartiq->app->create([
   "name" => "App name", // setting this to the name or id of your customer is recommended
   "project_id" => "PROJECT_ID",
 ]);
+```
+
+```bash cURL
+curl -X POST https://api.us.vartiq.com/apps \
+-H "X-API-KEY: YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"name": "App name", "project_id": "PROJECT_ID"}'
 ```
 
 </CodeGroup>
@@ -118,7 +125,7 @@ $app = $vartiq->app->create([
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 const webhook = await vartiq.webhook.create({
   url: "https://example.com",
   appId: "APP_ID",
@@ -126,7 +133,7 @@ const webhook = await vartiq.webhook.create({
 });
 ```
 
-```bash Go
+```go Go
 webhookResp, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 	Name:   "Webhook",
 	URL:    "https://your-webhook-url.com",
@@ -135,7 +142,7 @@ webhookResp, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 })
 ```
 
-```bash Python
+```python Python
 webhook = vartiq.webhook.create(
   name="Webhook",
   url="https://your-webhook-url.com",
@@ -144,13 +151,20 @@ webhook = vartiq.webhook.create(
 )
 ```
 
-```bash PHP
+```php PHP
 $webhook = $vartiq->webhook->create([
   'name' => 'Webhook',
   'url' => 'https://your-webhook-url.com',
   'appId' => 'APP_ID',
   'customHeaders' => [['key' => 'x-app', 'value' => 'x-value']] // optional
 ]);
+```
+
+```bash cURL
+curl -X POST https://api.us.vartiq.com/webhooks \
+-H "X-API-KEY: YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"name": "Webhook", "url": "https://your-webhook-url.com", "app_id": "APP_ID", "custom_headers": [{"key": "x-app", "value": "x-value"}]}'
 ```
 
 </CodeGroup>
@@ -161,25 +175,34 @@ Sending a message to a app(your customer) will send the message to all the webho
 
 <CodeGroup>
 
-```bash JS/TS
-const message = await vartiq.webhook.message.create("APP_ID", { hello: "world" });
+```javascript JavaScript
+const message = await vartiq.webhook.message.create("APP_ID", { 
+    hello: "world" 
+});
 ```
 
-```bash Go
+```go Go
 // Create a webhook message
 message, err := client.WebhookMessage.Create(ctx, "APP_ID", map[string]interface{}{
 	"hello": "world",
 })
 ```
 
-```bash Python
+```python Python
 message = vartiq.webhook.message.create("APP_ID", {"hello": "world"})
 ```
 
-```bash PHP
+```php PHP
 $message = $vartiq->webhook->message->create("APP_ID", [
   'hello' => 'world'
 ]);
+```
+
+```bash cURL
+curl -X POST https://api.us.vartiq.com/webhook-messages \
+-H "X-API-KEY: YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"app_id": "APP_ID", "payload": {"hello": "world"}}'
 ```
 
 </CodeGroup>

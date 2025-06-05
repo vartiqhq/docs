@@ -1,7 +1,7 @@
 ---
 title: 'Webhook Authentication'
 description: 'Authenticate your webhooks'
-icon: 'code'
+# icon: 'code'
 ---
 
 You can authenticate your webhooks using the following methods:
@@ -15,7 +15,7 @@ You can get the signature from the `X-Vartiq-Signature` header.
 If you like to chnage the header name and provide your own secret, you can do so while creating the webhook.
 
 <CodeGroup>
-```bash JS/TS
+```javascript JavaScript
 const webhook = await vartiq.webhook.create({
   name: "Webhook name",
   url: "https://example.com",
@@ -25,7 +25,7 @@ const webhook = await vartiq.webhook.create({
 });
 ```
 
-```bash Go
+```go Go
 webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 	Name: "Webhook name",
 	URL:  "https://example.com",
@@ -35,7 +35,7 @@ webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 })
 ```
 
-```bash Python
+```python Python
 webhook = vartiq.webhook.create(
   name="Webhook name",
   url="https://example.com",
@@ -45,7 +45,7 @@ webhook = vartiq.webhook.create(
 )
 ```
 
-```bash PHP
+```php PHP
 $webhook = $vartiq->webhook->create([
   "name" => "Webhook name",
   "url" => "https://example.com",
@@ -63,7 +63,7 @@ Basic Auth is a simple authentication method that uses a username and password t
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 const webhook = await vartiq.webhook.create({
   name: "Webhook name",
   url: "https://example.com",
@@ -73,7 +73,7 @@ const webhook = await vartiq.webhook.create({
 });
 ```
 
-```bash Go
+```go Go
 webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 	Name: "Webhook name",
 	URL:  "https://example.com",
@@ -83,7 +83,7 @@ webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 })
 ```
 
-```bash Python
+```python Python
 webhook = vartiq.webhook.create(
   name="Webhook name",
   url="https://example.com",
@@ -93,7 +93,7 @@ webhook = vartiq.webhook.create(
 )
 ```
 
-```bash PHP
+```php PHP
 $webhook = $vartiq->webhook->create([
   "name" => "Webhook name",
   "url" => "https://example.com",
@@ -111,7 +111,7 @@ You can use your own API key to authenticate the webhook.
 
 <CodeGroup>
 
-```bash JS/TS
+```javascript JavaScript
 const webhook = await vartiq.webhook.create({
   name: "Webhook name",
   url: "https://example.com",
@@ -121,7 +121,7 @@ const webhook = await vartiq.webhook.create({
 });
 ```
 
-```bash Go
+```go Go
 webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 	Name: "Webhook name",
 	URL:  "https://example.com",
@@ -131,7 +131,7 @@ webhook, err := client.Webhook.Create(ctx, &vartiq.CreateWebhookRequest{
 })
 ```
 
-```bash Python
+```python Python
 webhook = vartiq.webhook.create(
   name="Webhook name",
   url="https://example.com",
@@ -141,7 +141,7 @@ webhook = vartiq.webhook.create(
 )
 ```
 
-```bash PHP
+```php PHP
 $webhook = $vartiq->webhook->create([
   name="Webhook name",
   url="https://example.com",
